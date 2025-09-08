@@ -1,1 +1,1 @@
-export * from './PodcasItem.js';
+export * from './PodcasItem.ts';
