@@ -1,23 +1,23 @@
+import cors from 'cors';
 import Express from 'express';
-import { apiMarketingtools } from './api.js';
-import createArrayPodcastsTop from './utils/createArrayPodcastsTop.js';
+
+import routes from './routes.js';
+import fetchPodcastsTop from './services/podcastsTop.js';
 
 const app = new Express();
+app.use(cors());
 
-app.get('/podcastsTop/:country/limit/:limit', async (req, res) => {
+app.get(routes.podcastsTop, async (req, res) => {
 	try {
 		const { country, limit } = req.params;
-		const url = `/api/v2/${country}/podcasts/top/${limit}/podcasts.json`;
-		const { data } = await apiMarketingtools.get(url);
-		const { results } = data.feed;
-		const podcastsTop = createArrayPodcastsTop(results);
-		res.json(podcastsTop);
+
+		// podcastsTop: podcastItem[]
+		const podcastsTop = await fetchPodcastsTop(country, limit);
+		res.status(200).json(podcastsTop);
 	} catch (error) {
 		console.error(error);
-		res.status(500).json({ error: 'Something went wrong' });
+		res.status(500).json({ error: 'Failed to load top podcasts' });
 	}
 });
 
 export default app;
-
-// const url = `/api/v2/${country}/podcasts/top/${limit}/podcasts.json`;

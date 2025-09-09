@@ -1,36 +1,58 @@
-import tseslint from '@typescript-eslint/eslint-plugin';
-import tsParser from '@typescript-eslint/parser';
 import js from '@eslint/js';
 import stylistic from '@stylistic/eslint-plugin';
+import importPlugin from 'eslint-plugin-import';
+import jestPlugin from 'eslint-plugin-jest';
 
 export default [
+	{
+		ignores: ['node_modules', 'dist'],
+	},
 	js.configs.recommended,
 	{
-		files: ['**/*.ts'],
+		files: ['**/*.js'],
+		plugins: {
+			'@stylistic': stylistic,
+			jest: jestPlugin,
+			import: importPlugin,
+		},
 		languageOptions: {
-			parser: tsParser,
 			parserOptions: {
 				ecmaVersion: 'latest',
 				sourceType: 'module',
 			},
-		},
-		plugins: {
-			'@typescript-eslint': tseslint,
-			'@stylistic': stylistic,
-			jest: require('eslint-plugin-jest'),
+			globals: {
+				console: 'readonly',
+				process: 'readonly',
+
+				describe: 'readonly',
+				it: 'readonly',
+				test: 'readonly',
+				expect: 'readonly',
+			},
 		},
 		rules: {
-			// Основные правила
-			'@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
-			'@typescript-eslint/explicit-function-return-type': 'off',
+			// Main Rules
+			'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+			'no-undef': 'error',
 
-			// Стиль
+			// Style
 			'@stylistic/semi': ['error', 'always'],
-			'@stylistic/quotes': ['error', 'double'],
+			'@stylistic/quotes': ['error', 'single'],
 			'@stylistic/brace-style': 'off',
-		},
-		env: {
-			'jest/globals': true,
+
+			// Imports
+			'import/no-unresolved': 'error',
+			'import/no-duplicates': 'error',
+			'import/first': 'error',
+			'import/newline-after-import': 'error',
+			'import/order': [
+				'error',
+				{
+					groups: ['builtin', 'external', 'internal', ['parent', 'sibling', 'index']],
+					'newlines-between': 'always',
+					alphabetize: { order: 'asc', caseInsensitive: true },
+				},
+			],
 		},
 	},
 ];
