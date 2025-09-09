@@ -2,6 +2,7 @@ import js from '@eslint/js';
 import stylistic from '@stylistic/eslint-plugin';
 import importPlugin from 'eslint-plugin-import';
 import jestPlugin from 'eslint-plugin-jest';
+import tsPlugin from '@typescript-eslint/eslint-plugin';
 
 export default [
 	{
@@ -9,13 +10,15 @@ export default [
 	},
 	js.configs.recommended,
 	{
-		files: ['**/*.js'],
+		files: ['**/*.js', '**/*.ts'],
 		plugins: {
 			'@stylistic': stylistic,
 			jest: jestPlugin,
 			import: importPlugin,
+			'@typescript-eslint': tsPlugin,
 		},
 		languageOptions: {
+			parser: '@typescript-eslint/parser',
 			parserOptions: {
 				ecmaVersion: 'latest',
 				sourceType: 'module',
@@ -32,8 +35,9 @@ export default [
 		},
 		rules: {
 			// Main Rules
-			'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
-			'no-undef': 'error',
+			'no-unused-vars': 'off', // JS правило
+			'no-undef': 'off', // JS правило
+			'@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
 
 			// Style
 			'@stylistic/semi': ['error', 'always'],

@@ -1,4 +1,6 @@
-const createArrayPodcastsTop = (podcasts) => {
+import { PodcastTop } from '../models/PodcasItem.js';
+
+const createArrayPodcastsTop = (podcasts: PodcastTop[]) => {
 	if (!podcasts || podcasts.length < 1) {
 		throw new Error('Failed to get top podcasts');
 	}

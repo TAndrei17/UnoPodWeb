@@ -1,10 +1,10 @@
 import cors from 'cors';
-import Express from 'express';
+import express, { Express } from 'express';
 
 import routes from './routes.js';
 import fetchPodcastsTop from './services/podcastsTop.js';
 
-const app = new Express();
+const app: Express = express();
 app.use(cors());
 
 app.get(routes.podcastsTop, async (req, res) => {
