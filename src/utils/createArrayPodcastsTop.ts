@@ -1,4 +1,4 @@
-import { PodcastTop } from '../models/PodcasItem.js';
+import { PodcastTop } from '../models/PodcastItem.js';
 
 const createArrayPodcastsTop = (podcasts: PodcastTop[]) => {
 	if (!podcasts || podcasts.length < 1) {

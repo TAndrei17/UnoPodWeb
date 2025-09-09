@@ -1,5 +1,5 @@
 import { apiMarketingtools } from '../api.js';
-import { PodcastsTopResponse } from '../models/PodcasItem.js';
+import { PodcastsTopResponse } from '../models/PodcastItem.js';
 import createArrayPodcastsTop from '../utils/createArrayPodcastsTop.js';
 
 const fetchPodcastsTop = async (country: string, limit: string) => {

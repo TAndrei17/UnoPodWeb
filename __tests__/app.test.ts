@@ -1,6 +1,6 @@
 import request from 'supertest';
 
-import app from '../src/app.js';
+import app from '../src/app';
 
 test('podcastsTop', async () => {
 	const res = await request(app).get('/podcastsTop/country/es/limit/5');
