@@ -1,4 +1,11 @@
 #!/usr/bin/env node
 
+// Load environment variables
+import 'dotenv/config';
 import app from '../src/app.js';
-app.listen(4000);
+
+const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 4000;
+
+app.listen(PORT, () => {
+	console.log(`Server running on http://localhost:${PORT}`);
+});
