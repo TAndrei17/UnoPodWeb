@@ -1,14 +1,14 @@
 import { Router } from 'express';
-import fetchPodcastsTop from '../services/podcastsTop.js';
+import fetchPodcastsTop from '../services/fetchPodcastsTop.js';
 import { PodcastItem } from '../models/PodcastItem.js';
 import routes from './routes.js';
 
-const router = Router();
+const podcastsTopRouter = Router();
 
-router.get(routes.podcastsTop, async (req, res) => {
+podcastsTopRouter.get(routes.top, async (req, res) => {
 	try {
-		const { country, limit } = req.params;
-		const podcastsTop: PodcastItem[] = await fetchPodcastsTop(country, limit);
+		const { country, limit } = req.query;
+		const podcastsTop: PodcastItem[] = await fetchPodcastsTop(String(country), String(limit));
 		res.status(200).json(podcastsTop);
 	} catch (error) {
 		console.error(error);
@@ -16,4 +16,4 @@ router.get(routes.podcastsTop, async (req, res) => {
 	}
 });
 
-export default router;
+export default podcastsTopRouter;

@@ -1,5 +1,7 @@
 const routes = {
-	podcastsTop: '/podcastsTop/country/:country/limit/:limit',
+	top: '/top',
+	byGenre: '/genre',
+	byTerm: '/term',
 };
 
 export default routes;
