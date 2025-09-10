@@ -17,6 +17,7 @@ PodcastsByGenreRouter.get(routes.byGenre, async (req, res) => {
 			genre: genreNum, // placeholder
 			term: '', // placeholder
 		});
+		console.log('Подкасты на сервере', podcastsTop);
 		res.status(200).json(podcastsTop);
 	} catch (error) {
 		console.error(error);
