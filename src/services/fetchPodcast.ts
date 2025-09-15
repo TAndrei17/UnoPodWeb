@@ -3,7 +3,6 @@ import { PodcastParams, PodcastResponse } from '../models/Podcast.js';
 
 const fetchPodcast = async (params: PodcastParams) => {
 	const { id } = params;
-	console.log(params);
 
 	const path = `/lookup?id=${id}&entity=podcast`;
 	const { data }: { data: PodcastResponse } = await api.get(path);

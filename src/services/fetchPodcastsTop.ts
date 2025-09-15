@@ -4,7 +4,6 @@ import createArrayPodcastsTop from '../utils/createArrayPodcastsTop.js';
 
 const fetchPodcastsTop = async (country: string, limit: string) => {
 	const url = `/api/v2/${country}/podcasts/top/${limit}/podcasts.json`;
-	console.log('URL', url);
 	const { data }: { data: PodcastsTopResponse } = await apiMarketingtools.get(url);
 
 	if (!data?.feed?.results) {
