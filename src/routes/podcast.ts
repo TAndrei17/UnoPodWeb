@@ -11,7 +11,6 @@ podcastRouter.get(routes.podcast, async (req, res) => {
 		const { id } = req.query;
 		const idString = String(id);
 		const data: PodcastResponse = await fetchPodcast({ id: idString });
-		console.log('Подкаст пришел', data);
 		const podcast = createObjectPodcast(data);
 		res.status(200).json([podcast]);
 	} catch (error) {
