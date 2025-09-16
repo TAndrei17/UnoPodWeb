@@ -4,7 +4,7 @@
 		"module": "nodenext",
 		"moduleResolution": "nodenext",
 		"outDir": "./dist",
-		"rootDir": "./src",
+		"rootDir": ".",
 		"strict": true,
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
@@ -12,8 +12,12 @@
 		"sourceMap": true,
 		"declaration": true,
 		"isolatedModules": true,
-		"allowImportingTsExtensions": false
+		"allowImportingTsExtensions": false,
+		"baseUrl": "./",
+		"paths": {
+			"@/*": ["src/*"]
+		}
 	},
-	"include": ["src/**/*"],
+	"include": ["src/**/*", "bin/**/*"],
 	"exclude": ["node_modules", "dist"]
 }
