@@ -2,6 +2,8 @@ import js from '@eslint/js';
 import stylistic from '@stylistic/eslint-plugin';
 import importPlugin from 'eslint-plugin-import';
 import jestPlugin from 'eslint-plugin-jest';
+import tsPlugin from '@typescript-eslint/eslint-plugin';
+import tsParser from '@typescript-eslint/parser';
 
 export default [
 	{
@@ -9,13 +11,15 @@ export default [
 	},
 	js.configs.recommended,
 	{
-		files: ['**/*.js'],
+		files: ['**/*.js', '**/*.ts'],
 		plugins: {
 			'@stylistic': stylistic,
 			jest: jestPlugin,
 			import: importPlugin,
+			'@typescript-eslint': tsPlugin,
 		},
 		languageOptions: {
+			parser: tsParser,
 			parserOptions: {
 				ecmaVersion: 'latest',
 				sourceType: 'module',
@@ -30,10 +34,22 @@ export default [
 				expect: 'readonly',
 			},
 		},
+		settings: {
+			'import/resolver': {
+				typescript: {
+					project: './tsconfig.json', // Eslint смотрит в tsconfig
+					alwaysTryTypes: true,
+				},
+				node: {
+					extensions: ['.js', '.jsx', '.ts', '.tsx'],
+				},
+			},
+		},
 		rules: {
 			// Main Rules
-			'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
-			'no-undef': 'error',
+			'no-unused-vars': 'off', // JS правило
+			'no-undef': 'off', // JS правило
+			'@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
 
 			// Style
 			'@stylistic/semi': ['error', 'always'],

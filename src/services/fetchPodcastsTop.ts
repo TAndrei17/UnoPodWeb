@@ -1,9 +1,10 @@
 import { apiMarketingtools } from '../api.js';
+import { PodcastsTopResponse } from '../models/PodcastItem.js';
 import createArrayPodcastsTop from '../utils/createArrayPodcastsTop.js';
 
-const fetchPodcastsTop = async (country, limit) => {
+const fetchPodcastsTop = async (country: string, limit: string) => {
 	const url = `/api/v2/${country}/podcasts/top/${limit}/podcasts.json`;
-	const { data } = await apiMarketingtools.get(url);
+	const { data }: { data: PodcastsTopResponse } = await apiMarketingtools.get(url);
 
 	if (!data?.feed?.results) {
 		throw new Error('Invalid response from upstream API');
