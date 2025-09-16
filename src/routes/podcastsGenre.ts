@@ -1,6 +1,7 @@
 import { Router, Request, Response } from 'express';
-import { PodcastItem, PodcastsParams } from '../models/PodcastItem.js';
+
 import routes from './routes.js';
+import { PodcastItem, PodcastsParams } from '../models/PodcastItem.js';
 import { fetchPodcastsByGenre } from '../services/fetchPodcasts.js';
 
 const PodcastsByGenreRouter = Router();

@@ -11,7 +11,8 @@
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"declaration": true,
-		"isolatedModules": true
+		"isolatedModules": true,
+		"allowImportingTsExtensions": false
 	},
 	"include": ["src/**/*"],
 	"exclude": ["node_modules", "dist"]

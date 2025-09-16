@@ -1,10 +1,11 @@
 import cors from 'cors';
 import express, { Express } from 'express';
-import podcastsTopRouter from './routes/podcastsTop.js';
-import podcastsByGenreRouter from './routes/podcastsGenre.js';
-import podcastsByTermRouter from './routes/podcastsTerm.js';
+
 import episodesRouter from './routes/episodes.js';
 import podcastRouter from './routes/podcast.js';
+import podcastsByGenreRouter from './routes/podcastsGenre.js';
+import podcastsByTermRouter from './routes/podcastsTerm.js';
+import podcastsTopRouter from './routes/podcastsTop.js';
 
 const app: Express = express();
 app.use(cors());

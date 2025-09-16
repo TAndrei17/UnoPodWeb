@@ -3,6 +3,7 @@ import stylistic from '@stylistic/eslint-plugin';
 import importPlugin from 'eslint-plugin-import';
 import jestPlugin from 'eslint-plugin-jest';
 import tsPlugin from '@typescript-eslint/eslint-plugin';
+import tsParser from '@typescript-eslint/parser';
 
 export default [
 	{
@@ -18,7 +19,7 @@ export default [
 			'@typescript-eslint': tsPlugin,
 		},
 		languageOptions: {
-			parser: '@typescript-eslint/parser',
+			parser: tsParser,
 			parserOptions: {
 				ecmaVersion: 'latest',
 				sourceType: 'module',
@@ -31,6 +32,17 @@ export default [
 				it: 'readonly',
 				test: 'readonly',
 				expect: 'readonly',
+			},
+		},
+		settings: {
+			'import/resolver': {
+				typescript: {
+					project: './tsconfig.json', // Eslint смотрит в tsconfig
+					alwaysTryTypes: true,
+				},
+				node: {
+					extensions: ['.js', '.jsx', '.ts', '.tsx'],
+				},
 			},
 		},
 		rules: {

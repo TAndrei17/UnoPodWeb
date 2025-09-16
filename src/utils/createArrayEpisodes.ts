@@ -2,7 +2,6 @@ import cleanTags from './cleanTags.js';
 import createDate from './createDate.js';
 import generateUniqueId from './generateUniqueId.js';
 import parseXmltoJson from './parseXmlToJson.js';
-
 import { EpisodeItem } from '../models/EpisodesItem.js';
 
 const createArrayEpisodes = (xmlData: string, podcastId: string): EpisodeItem[] => {
