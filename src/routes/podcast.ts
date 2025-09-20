@@ -18,7 +18,7 @@ podcastRouter.get(
 			res.status(200).json([podcast]);
 		} catch (error) {
 			console.error(error);
-			res.status(500).json({ error: 'Failed to load top podcasts' });
+			res.status(500).json({ error: 'Failed to load top podcast' });
 		}
 	}
 );

@@ -16,3 +16,7 @@ export interface EpisodesParams {
 	url: string;
 	podcast_id: string;
 }
+
+export interface EpisodeParams extends EpisodesParams {
+	episode_id: string;
+}
