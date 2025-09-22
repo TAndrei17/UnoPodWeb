@@ -9,7 +9,13 @@ import podcastsByTermRouter from './routes/podcastsTerm.js';
 import podcastsTopRouter from './routes/podcastsTop.js';
 
 const app: Express = express();
-app.use(cors());
+
+app.use(
+	cors({
+		origin: 'https://unopod.expo.app', // allow only this domain
+		optionsSuccessStatus: 200,
+	})
+);
 
 app.use('/podcasts', podcastsTopRouter);
 app.use('/podcasts', podcastsByGenreRouter);
