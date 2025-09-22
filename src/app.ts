@@ -10,12 +10,15 @@ import podcastsTopRouter from './routes/podcastsTop.js';
 
 const app: Express = express();
 
-app.use(
-	cors({
-		origin: 'https://unopod.expo.app', // allow only this domain
-		optionsSuccessStatus: 200,
-	})
-);
+const corsOptions = {
+	origin:
+		process.env.NODE_ENV === 'production'
+			? 'https://unopod.expo.app'
+			: ['https://unopod.expo.app', 'http://localhost:4000'],
+	optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 
 app.use('/podcasts', podcastsTopRouter);
 app.use('/podcasts', podcastsByGenreRouter);
