@@ -8,7 +8,7 @@ const corsOptions = {
 	origin:
 		process.env.NODE_ENV === 'production'
 			? 'https://unopod.expo.app'
-			: ['https://unopod.expo.app', 'http://localhost:4000'],
+			: ['https://unopod.expo.app', 'http://localhost:8081'],
 	optionsSuccessStatus: 200,
 };
 
