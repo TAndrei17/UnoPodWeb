@@ -8,7 +8,7 @@
 		"build": "tsc",
 		"start": "npm run build && node dist/bin/app.js",
 		"dev": "node --loader ts-node/esm --no-warnings bin/app.ts",
-		"test": "NODE_OPTIONS=--experimental-vm-modules npx jest",
+		"test": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' npx jest",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix"
 	},
