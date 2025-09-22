@@ -12,6 +12,11 @@ podcastsTopRouter.get(
 		try {
 			const { country, limit } = req.query;
 			const podcastsTop: PodcastItem[] = await fetchPodcastsTop(String(country), String(limit));
+
+			if (!podcastsTop || !podcastsTop.length) {
+				return res.status(404).json({ error: 'Podcasts not found' });
+			}
+
 			res.status(200).json(podcastsTop);
 		} catch (error) {
 			console.error(error);

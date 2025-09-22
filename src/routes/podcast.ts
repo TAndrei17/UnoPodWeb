@@ -14,11 +14,16 @@ podcastRouter.get(
 			const { id } = req.query;
 			const idString = String(id);
 			const data: PodcastResponse = await fetchPodcast({ id: idString });
+
+			if (!data || !data.results) {
+				return res.status(404).json({ error: 'Podcast not found' });
+			}
+
 			const podcast: Podcast = createObjectPodcast(data);
 			res.status(200).json([podcast]);
 		} catch (error) {
 			console.error(error);
-			res.status(500).json({ error: 'Failed to load top podcast' });
+			res.status(500).json({ error: 'Failed to load podcast' });
 		}
 	}
 );

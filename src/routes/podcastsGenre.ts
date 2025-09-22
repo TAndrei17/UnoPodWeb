@@ -11,15 +11,21 @@ PodcastsByGenreRouter.get(
 	async (req: Request<{}, {}, {}, PodcastsParams>, res: Response) => {
 		try {
 			const { country, limit, genre } = req.query;
-			const limitNum = Number(limit);
-			const genreNum = Number(genre);
+			const limitNum = limit ? Number(limit) : 20;
+			const genreNum = genre ? Number(genre) : 1489;
 			const countryString = String(country);
+
 			const podcasts: PodcastItem[] = await fetchPodcastsByGenre({
 				country: countryString,
 				limit: limitNum,
-				genre: genreNum, // placeholder
+				genre: genreNum,
 				term: '', // placeholder
 			});
+
+			if (!podcasts || !podcasts.length) {
+				return res.status(404).json({ error: 'Podcasts not found' });
+			}
+
 			res.status(200).json(podcasts);
 		} catch (error) {
 			console.error(error);

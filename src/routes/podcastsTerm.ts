@@ -12,15 +12,21 @@ PodcastsByTermRouter.get(
 		try {
 			const { term, limit, country, genre } = req.query;
 			const termString = String(term);
-			const countryString = String(country);
-			const genreNum = Number(genre);
-			const limitNum = Number(limit);
+			const countryString = country ? String(country) : 'us';
+			const limitNum = limit ? Number(limit) : 20;
+			const genreNum = genre ? Number(genre) : 1489;
+
 			const podcasts: PodcastItem[] = await fetchPodcastsByTerm({
 				term: termString,
 				limit: limitNum,
 				country: countryString, // placeholder
 				genre: genreNum, // placeholder
 			});
+
+			if (!podcasts || !podcasts.length) {
+				return res.status(404).json({ error: 'Podcasts not found' });
+			}
+
 			res.status(200).json(podcasts);
 		} catch (error) {
 			console.error(error);
