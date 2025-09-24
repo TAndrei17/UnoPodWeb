@@ -24,6 +24,11 @@ episodesRouter.get(
 			const limitNumber = limit ? parseInt(limit, 10) : 20;
 			const offsetNumber = offset ? parseInt(offset, 10) : 0;
 
+			if (offsetNumber >= episodes.length) {
+				res.status(200).json([]);
+				return;
+			}
+
 			const paginatedEpisodes = episodes.slice(offsetNumber, offsetNumber + limitNumber);
 
 			res.status(200).json(paginatedEpisodes);
