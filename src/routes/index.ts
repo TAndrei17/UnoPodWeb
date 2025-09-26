@@ -5,9 +5,11 @@ import podcastsByTermRouter from './podcastsTerm.js';
 import podcastRouter from './podcast.js';
 import episodesRouter from './episodes.js';
 import episodeRouter from './episode.js';
+import genresRouter from './genres.js';
 
 const router = Router();
 
+router.use('/genres', genresRouter);
 router.use('/podcasts', podcastsTopRouter);
 router.use('/podcasts', podcastsByGenreRouter);
 router.use('/podcasts', podcastsByTermRouter);
