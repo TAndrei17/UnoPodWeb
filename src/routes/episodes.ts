@@ -1,9 +1,9 @@
 import { Router, Request, Response } from 'express';
 
 import apiItunes from '../api.js';
+import routes from './routes.js';
 import { EpisodeItem, EpisodesParams } from '../models/EpisodesItem.js';
 import createArrayEpisodes from '../utils/createArrayEpisodes.js';
-import routes from './routes.js';
 
 const episodesRouter = Router();
 
@@ -34,7 +34,7 @@ episodesRouter.get(
 			res.status(200).json(paginatedEpisodes);
 		} catch (error) {
 			console.error(error);
-			res.status(500).json({ error: "Failed to load podcast's episodes" });
+			res.status(500).json({ error: 'Failed to load podcast\'s episodes' });
 		}
 	}
 );
