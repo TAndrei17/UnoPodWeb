@@ -1,3 +1,5 @@
+[![Maintainability](https://qlty.sh/gh/TAndrei17/projects/UnoPodWeb/maintainability.svg)](https://qlty.sh/gh/TAndrei17/projects/UnoPodWeb) [![Code Coverage](https://qlty.sh/gh/TAndrei17/projects/UnoPodWeb/coverage.svg)](https://qlty.sh/gh/TAndrei17/projects/UnoPodWeb)
+
 ## Backend para la versión web de UnoPod
 
 El backend realiza un procesamiento intermedio: obtiene los datos abiertos de Apple Podcasts, los convierte a JSON y los envía a la versión web de UnoPod para su posterior visualización por parte del usuario.

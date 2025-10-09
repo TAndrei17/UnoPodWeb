@@ -5,10 +5,12 @@
 	"main": "app.js",
 	"type": "module",
 	"scripts": {
+		"ci": "npm ci",
 		"build": "tsc",
 		"start": "npm run build && node dist/bin/app.js",
 		"dev": "node --loader ts-node/esm --no-warnings bin/app.ts",
 		"test": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' npx jest",
+		"test-coverage": "NODE_OPTIONS='--experimental-vm-modules --no-warnings' npx jest --coverage",
 		"lint": "eslint .",
 		"lint:fix": "eslint . --fix"
 	},
