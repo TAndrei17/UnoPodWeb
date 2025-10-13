@@ -14,12 +14,15 @@ const corsOptions = {
 	optionsSuccessStatus: 200,
 };
 
+// Not required, since all images are now served directly from GitHub Pages
+
 // Convert the module's URL (...app.ts) to an absolute file path
-const __filename = fileURLToPath(import.meta.url);
+// const __filename = fileURLToPath(import.meta.url);
 // Get the directory path of the current file
-const __dirname = path.dirname(__filename);
+// const __dirname = path.dirname(__filename);
+
 // Serve static files from 'public/assets' at the '/assets' route
-app.use('/assets', express.static(path.join(__dirname, 'public', 'assets')));
+// app.use('/assets', express.static(path.join(__dirname, 'public', 'assets')));
 
 app.use(cors(corsOptions));
 app.use(express.json()); // for future

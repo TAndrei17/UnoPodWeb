@@ -10,15 +10,7 @@ genresRouter.get('/', (req, res) => {
 			return res.status(404).json({ error: 'Genres not found' });
 		}
 
-		const protocol = req.headers['x-forwarded-proto'] || req.protocol;
-		const host = req.headers.host;
-
-		const genresWithFullUrl = genres.map((cat) => ({
-			...cat,
-			image: `${protocol}://${host}${cat.image}`,
-		}));
-
-		res.json(genresWithFullUrl);
+		res.json(genres);
 	} catch (error) {
 		console.error(error);
 		res.status(500).json({ error: 'Failed to load genres' });
