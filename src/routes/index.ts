@@ -2,10 +2,10 @@ import { Router } from 'express';
 
 import episodeRouter from './episode.js';
 import episodesRouter from './episodes.js';
+import genresRouter from './genres.js';
 import podcastRouter from './podcast.js';
 import podcastsByGenreRouter from './podcastsGenre.js';
 import podcastsByTermRouter from './podcastsTerm.js';
-import genresRouter from './genres.js';
 import podcastsTopRouter from './podcastsTop.js';
 
 const router = Router();

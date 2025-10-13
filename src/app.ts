@@ -1,9 +1,10 @@
+// import path from 'path';
+// import { fileURLToPath } from 'url';
+
 import cors from 'cors';
 import express, { Express } from 'express';
 
 import router from './routes/index.js';
-import path from 'path';
-import { fileURLToPath } from 'url';
 
 const app: Express = express();
 
