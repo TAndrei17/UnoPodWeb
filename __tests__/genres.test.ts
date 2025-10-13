@@ -13,3 +13,13 @@ test('genres', async () => {
 	expect(genre.id).toBe(1301);
 	expect(genre.name_en).toBe('Arts');
 });
+
+/*
+
+test('image file exists and is served correctly', async () => {
+	const res = await request(app).get('/assets/images/family.jpg');
+	expect(res.status).toBe(200);
+	expect(res.header['content-type']).toMatch(/^image\//);
+});
+
+*/
